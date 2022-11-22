@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+SVHN_single_grey1.h5
 
 # C extensions
 *.so
