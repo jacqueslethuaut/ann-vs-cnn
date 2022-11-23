@@ -1,9 +1,12 @@
-# ann-vs-cnn
-ANN vs CNN - Comparison of 2 main networks
+# ANN vs CNN - Comparison of 2 main networks
 
-Results obtained on Mac M2 with tensorFlow usage
 
-To compile TensorFlow on Mac M2 (November 2022), there is no other choice than Miniconda (bazel does not work at this time)
+Results obtained on Mac M2 with tensorFlow usage on Visual Studio Code with Jupyter extension
+
+
+## First install TensorFlow on Apple M2
+
+To compile TensorFlow on Apple M2 (November 2022), there is no other choice than Miniconda (bazel does not work at this time)
 
 https://developer.apple.com/metal/tensorflow-plugin/
 
@@ -15,11 +18,13 @@ conda install -c apple tensorflow-deps
 
 2. Virtual Environment
 
-python3 -m venv ~/venv-metal
-source ~/venv-metal/bin/activate
-python -m pip install -U pip
+Create venv-metal with Visual Studio Code
+conda activate venv-metal
+python -m pip install -U pip 
 
-3.  TensorFlow
+=> assume this is the conda's python now and below
+
+1.  TensorFlow
 
 python -m pip install tensorflow-macos
 
@@ -48,6 +53,39 @@ loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 model.compile(optimizer="adam", loss=loss_fn, metrics=["accuracy"])
 model.fit(x_train, y_train, epochs=5, batch_size=64)
 
+=> see the GPU usage on M2
 
-** as expected CNN is far more accurate than ANN even with overfitting 
+
+## Install Visual Keras
+
+This help to visualize the different layers of different Networks
+
+Installing Visual Keras is a little it touchy in the venv-metal
+
+After activating venv-metal, install graphviz
+
+conda install graphviz  (here 2.50.0 has been installed)
+
+then 
+
+pip install pydot
+pip install pydotplus
+
+=> relaunch Visual Studio Code
+
+
+## TensorBoard
+
+TensorBoard is really an interesting interactive tool. There are a lot of possibilities inside to analyse NN and the different behaviors
+
+pip install tensorboard
+
+
+## Compare the 2 networks CNN and ANN
+
+as expected CNN is far more accurate than ANN even with overfitting 
+
+4 models have been tested : 2 ANN and 2 CNN
+
+=> the overall success rate is for CNN with more than 90% of success instead of 77% for ANN
 
