@@ -97,6 +97,10 @@ TensorBoard is really an interesting interactive tool. There are a lot of possib
 pip install tensorboard
 ```
 
+## Unzip the dataset 
+
+If you want to test, it is better to unzip the multipart zipped dataset
+
 
 ## Compare the 2 networks CNN and ANN
 
